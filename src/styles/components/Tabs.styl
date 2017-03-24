@@ -1,0 +1,41 @@
+@import '../variables'
+
+
+#tab-container
+  & > div
+    border-right black solid 1px
+    &:last-child
+      border none
+  &:hover
+    cursor pointer
+
+.tab-box
+  position relative
+  width 33.333%
+  background lightPurple
+  text-align center
+  padding 10px 0px
+
+.arrow-box
+  position relative
+  width: 33.333%
+  background purple
+  text-align center
+  padding 10px 0px
+
+.arrow-box:after, .arrow-box:before
+	top: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+
+
+.arrow-box:after
+	border-color: rgba(136, 183, 213, 0);
+	border-top-color: purple
+	border-width: 10px;
+	margin-left: -10px;
