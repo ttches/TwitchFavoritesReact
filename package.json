@@ -7,12 +7,25 @@
     "react-dom": "^15.4.2"
   },
   "devDependencies": {
-    "react-scripts": "0.9.5"
+    "babel-eslint": "^7.2.1",
+    "eslint": "^3.18.0",
+    "eslint-plugin-flowtype": "^2.30.4",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3",
+    "nib": "^1.1.2",
+    "npm-run-all": "^4.0.2",
+    "react-scripts": "0.9.5",
+    "stylus": "^0.54.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm-run-all -p watch-css start-js",
+    "start-js": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "watch-css": "stylus -w -u nib D:\\Documents\\Programming\\TwitchStreams2\\src\\index.styl -o D:\\Documents\\Programming\\TwitchStreams2\\src"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   }
 }
