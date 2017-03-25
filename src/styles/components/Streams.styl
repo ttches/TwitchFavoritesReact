@@ -1,0 +1,88 @@
+#loading-div
+  display: flex
+  display: none
+  align-items center
+  height 160px
+  background-color white
+
+.loader
+  margin 0 auto
+  border 10px solid offlineColor
+  border-radius 50%
+  border-top 10px solid purple
+  width 90px
+  height 90px
+  animation spin 1s linear infinite
+
+@keyframes spin
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+
+.online-streams
+  background-color onlineColor
+  border-top black
+
+.online-stream, .offline-stream
+  display flex
+  flex-wrap no-wrap
+  width 100%
+  overflow hidden
+
+.stream-logo
+  display flex
+  width 30%
+  max-width 100px
+  img
+    width 80px
+    height 100%
+    max-height 87px
+
+.stream-basic-info
+  display flex
+  width 70%
+  padding 15px
+  padding-bottom 0
+  p
+    padding 0
+
+.status
+  padding 0
+  margin 0
+  font-size .8em
+
+.offline-streams
+  background-color offlineColor
+  border-top 1px solid black
+  a
+    color typeOffline
+  .streams-placeholder
+    display flex
+    align-items center
+    justify-content center
+    height 80px
+    color typeOffline
+    font-size 1.5em
+    font-weight 500
+    i
+      margin-right 30px
+      font-size 2em
+  .streams-placeholder
+    &:hover
+      cursor pointer
+
+.online-light
+  display inline-block
+  height 10px
+  width 10px
+  background-color hsla(139, 100%, 49%, 1)
+  border-radius 50%
+  box-shadow 0 0 3px hsla(139, 100%, 49%, 1),0 0 10px hsla(139, 100%, 49%, 1)
+  animation inex 1.5s infinite linear
+  margin-right 5px
+  margin-top 5px
+
+@keyframes inex
+  50%
+    opacity 0.4
+  60%
+    opacity 1

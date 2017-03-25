@@ -4,6 +4,7 @@ import './index.css';
 import Nav from './containers/Nav';
 import { Tabs } from './containers/Tabs';
 import Input from './containers/Input';
+import Streams from './containers/Streams';
 
 class App extends Component {
 
@@ -14,6 +15,7 @@ class App extends Component {
         <main>
           <Tabs />
           <Input />
+          <Streams />
         </main>
       </div>
     );

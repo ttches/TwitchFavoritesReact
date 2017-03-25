@@ -9,7 +9,7 @@ export default class Input extends Component {
   render() {
     return (
       <div className="search-div">
-        <div id="refreshButton" onClick="callEach(streams)"><i className="fa fa-refresh" aria-hidden="true"></i></div>
+        <div id="refreshButton"><i className="fa fa-refresh" aria-hidden="true"></i></div>
         <div id="addSearchIcon"><i className="fa fa-search" aria-hidden="true"></i></div>
         <input id="searchInput" type="text" placeholder="Search your streamers" />
       </div>
