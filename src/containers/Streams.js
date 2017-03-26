@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { StreamsPlaceholder } from './StreamsPlaceholder';
 
 export default class Streams extends Component {
   constructor() {
@@ -10,17 +11,13 @@ export default class Streams extends Component {
   }
   render() {
     const noStreams = true;
+    
     if (noStreams) {
       return (
-        <div className="offline-streams">
-          <div className="streams-placeholder"
-               onClick={this.transferFocus}>
-            <i className="fa fa-plus-circle" aria-hidden="true"></i>
-              Click to add Streamers
-          </div>
-        </div>
-      );
+        <StreamsPlaceholder />
+      )
     }
+
 
     return (
       <div>

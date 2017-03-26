@@ -175,8 +175,11 @@ u {
   -webkit-justify-content: center;
   justify-content: center;
 }
-#searchInput {
+.search-div form {
   width: 70%;
+}
+#searchInput {
+  width: 90%;
   padding: 7px;
   padding-left: 30px;
   border: 1px solid #000;
@@ -184,6 +187,8 @@ u {
 }
 #searchInput:focus {
   outline: none;
+  -webkit-box-shadow: 0 0 5px #6441a4;
+  box-shadow: 0 0 5px #6441a4;
 }
 #addSearchIcon {
   border: 1px solid #000;
@@ -193,6 +198,7 @@ u {
   position: relative;
   margin-left: 20px;
   top: 5px;
+  left: 5px;
 }
 #refreshButton {
   border-right: none;
