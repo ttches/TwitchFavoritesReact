@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import { ROOT_URL, API_KEY, addStreamer} from '../actions/index.js';
 
-export default class Input extends Component {
+class Input extends Component {
   constructor(props) {
     super(props);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.sortOnline = this.sortOnline.bind(this);
     this.state = { input: '' };
   }
 
@@ -19,10 +20,14 @@ export default class Input extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const request = axios.get(`https://api.twitch.tv/kraken/channels/chu8?client_id=i30wq60kvle7tjxaye4s84w760olue`)
-    .then((response) => {
-      console.log(response);
+    this.props.addStreamer(this.state.input)
+    .then(() => {
+      console.log(this.props.streamers);
     })
+  }
+
+  sortOnline() {
+    return;
   }
 
   render() {
@@ -42,3 +47,9 @@ export default class Input extends Component {
     );
   }
 }
+
+function mapStateToProps(state) {
+  return { streamers: state.streamers };
+}
+
+export default connect(mapStateToProps, { addStreamer })(Input);
