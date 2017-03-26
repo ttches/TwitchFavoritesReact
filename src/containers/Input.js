@@ -29,12 +29,14 @@ export default class Input extends Component {
     return (
       <div className="search-div">
         <div id="refreshButton"><i className="fa fa-refresh" aria-hidden="true"></i></div>
-        <div id="addSearchIcon"><i className="fa fa-search" aria-hidden="true"></i></div>
         <form onSubmit={this.handleSubmit}>
-          <input id="searchInput" type="text" placeholder="Search your streamers"
-            value={this.state.input}
-            onChange={this.handleInputChange}
-            onSubmit={() => console.log('test')}/>
+          <div className="input-container">
+            <div id="addSearchIcon"><p><i className="fa fa-search" aria-hidden="true"></i></p></div>
+            <input id="searchInput" type="text" placeholder="Search your streamers"
+              value={this.state.input}
+              onChange={this.handleInputChange}
+              onSubmit={() => console.log('test')}/>
+          </div>
         </form>
       </div>
     );
