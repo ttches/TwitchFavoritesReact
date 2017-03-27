@@ -23,11 +23,38 @@ class Input extends Component {
     this.props.addStreamer(this.state.input)
     .then(() => {
       console.log(this.props.streamers);
+      this.setState({
+        input: ''
+      });
+      this.sortOnline();
     })
   }
 
   sortOnline() {
-    return;
+    const streamerArr = Object.keys(this.props.streamers).sort((a, b) =>  a > b);
+    const streamerList = streamerArr.join(',');
+    console.log(streamerList);
+    let  [onlineStreamers, offlineStreamers] = [ [], [] ];
+
+    const request = axios
+    .get(`${ROOT_URL}streams/${API_KEY}&channel=${streamerList}`)
+    .then((response) => {
+      const onlineIDs = response.data.streams.map((streamer) =>  {
+        return streamer.channel._id
+      });
+      console.log(response.data.streams, onlineIDs);
+      streamerArr.forEach((streamer) => {
+        console.log(this.props.streamers[streamer]._id);
+        if (onlineIDs.indexOf(this.props.streamers[streamer]._id) !== -1) {
+           onlineStreamers.push(streamer);
+        } else {
+          console.log(onlineIDs.indexOf(this.props.streamers[streamer]._id));
+          offlineStreamers.push(streamer);
+        }
+      });
+      console.log(onlineStreamers, offlineStreamers);
+    });
+
   }
 
   render() {

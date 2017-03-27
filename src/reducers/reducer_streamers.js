@@ -1,6 +1,6 @@
 import { ADD_STREAMER } from '../actions/index';
 
-const INITIAL_STATE = { streamers: {
+const INITIAL_STATE = {
   chu8: {
     "mature": false,
     "status": "chu8 :  I have absolutely 0 self-control when it comes to games",
@@ -68,15 +68,48 @@ const INITIAL_STATE = { streamers: {
       "teams": "https://api.twitch.tv/kraken/channels/ttches/teams",
       "videos": "https://api.twitch.tv/kraken/channels/ttches/videos"
     }
+  },
+  followgrubby: {
+    "mature": false,
+    "status": "Grubby - WC3 - w/ commentary & Q&A",
+    "broadcaster_language": "en",
+    "display_name": "FollowGrubby",
+    "game": "Warcraft III: The Frozen Throne",
+    "language": "en",
+    "_id": 20992865,
+    "name": "followgrubby",
+    "created_at": "2011-03-09T09:38:53Z",
+    "updated_at": "2017-03-26T23:05:10Z",
+    "delay": null,
+    "logo": "https://static-cdn.jtvnw.net/jtv_user_pictures/followgrubby-profile_image-23e63a06a5986c23-300x300.png",
+    "banner": null,
+    "video_banner": "https://static-cdn.jtvnw.net/jtv_user_pictures/followgrubby-channel_offline_image-0d860264903c22f0-1920x1080.png",
+    "background": null,
+    "profile_banner": "https://static-cdn.jtvnw.net/jtv_user_pictures/followgrubby-profile_banner-5843faeb870b471f-480.png",
+    "profile_banner_background_color": "#2b2a2a",
+    "partner": true,
+    "url": "https://www.twitch.tv/followgrubby",
+    "views": 25526179,
+    "followers": 203028,
+    "_links": {
+      "self": "https://api.twitch.tv/kraken/channels/followgrubby",
+      "follows": "https://api.twitch.tv/kraken/channels/followgrubby/follows",
+      "commercial": "https://api.twitch.tv/kraken/channels/followgrubby/commercial",
+      "stream_key": "https://api.twitch.tv/kraken/channels/followgrubby/stream_key",
+      "chat": "https://api.twitch.tv/kraken/chat/followgrubby",
+      "subscriptions": "https://api.twitch.tv/kraken/channels/followgrubby/subscriptions",
+      "editors": "https://api.twitch.tv/kraken/channels/followgrubby/editors",
+      "teams": "https://api.twitch.tv/kraken/channels/followgrubby/teams",
+      "videos": "https://api.twitch.tv/kraken/channels/followgrubby/videos"
+    }
   }
-}};
+};
 
 export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
     case ADD_STREAMER:
     let { data } = action.payload;
-      return {...state, streamers:{
-        [data.name]: data, ...state.streamers} };
+      return {...state, [data.name]: data };
     default:
       return state;
   }
