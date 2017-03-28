@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { ROOT_URL, API_KEY, addStreamer} from '../actions/index.js';
+import { ROOT_URL, API_KEY, addStreamer, sortStreamersStatus} from '../actions/index.js';
 
 class Input extends Component {
   constructor(props) {
@@ -36,6 +36,7 @@ class Input extends Component {
     console.log(streamerList);
     let  [onlineStreamers, offlineStreamers] = [ [], [] ];
 
+    //get list of IDs of who is online, onlineIDs
     const request = axios
     .get(`${ROOT_URL}streams/${API_KEY}&channel=${streamerList}`)
     .then((response) => {
@@ -43,6 +44,7 @@ class Input extends Component {
         return streamer.channel._id
       });
       console.log(response.data.streams, onlineIDs);
+      //compare streamer IDs to onlineIDs to sort on and offline
       streamerArr.forEach((streamer) => {
         console.log(this.props.streamers[streamer]._id);
         if (onlineIDs.indexOf(this.props.streamers[streamer]._id) !== -1) {
@@ -53,9 +55,15 @@ class Input extends Component {
         }
       });
       console.log(onlineStreamers, offlineStreamers);
+      console.log(this);
+      this.props.sortStreamersStatus([onlineStreamers, offlineStreamers]);
     });
-
   }
+
+  componentWillMount(){
+    this.sortOnline();  //eventually make this a refresh
+  }
+
 
   render() {
     return (
@@ -79,4 +87,4 @@ function mapStateToProps(state) {
   return { streamers: state.streamers };
 }
 
-export default connect(mapStateToProps, { addStreamer })(Input);
+export default connect(mapStateToProps, { addStreamer, sortStreamersStatus })(Input);

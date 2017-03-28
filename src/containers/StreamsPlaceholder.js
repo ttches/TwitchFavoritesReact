@@ -7,12 +7,10 @@ export const StreamsPlaceholder = () => {
   }
 
   return (
-    <div className="offline-streams">
       <div className="streams-placeholder"
            onClick={transferFocus}>
         <i className="fa fa-plus-circle" aria-hidden="true"></i>
           Click to add Streamers
       </div>
-    </div>
   );
 }
