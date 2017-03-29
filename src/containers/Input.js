@@ -18,6 +18,7 @@ class Input extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    
     this.props.addStreamer(this.props.input)
     .then(() => {
       console.log(this.props.streamers);

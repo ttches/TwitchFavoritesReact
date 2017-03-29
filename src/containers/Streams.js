@@ -10,6 +10,7 @@ class Streams extends Component {
     this.displayFilter = this.displayFilter.bind(this);
   }
 
+//Transfers focus to imput when clicking add new streamer
   transferFocus() {
     document.getElementById('searchInput').focus();
   }
@@ -17,11 +18,12 @@ class Streams extends Component {
 //Only streamers matching input will be displayed
   displayFilter(streamer) {
     const regex = new RegExp(this.props.input, 'gi');
-    if (this.props.streamers[streamer].game) {
-      return this.props.streamers[streamer].name.match(regex) ||
-      this.props.streamers[streamer].game.match(regex);
+    const { streamers } = this.props;
+    if (streamers[streamer].game) {
+      return streamers[streamer].name.match(regex) ||
+      streamers[streamer].game.match(regex);
     } else {
-      return this.props.streamers[streamer].name.match(regex);
+      return streamers[streamer].name.match(regex);
     }
   }
 

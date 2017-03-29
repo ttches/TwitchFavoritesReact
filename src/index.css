@@ -412,6 +412,10 @@ nav .nav-container p {
   margin-right: 5px;
   margin-top: 5px;
 }
+.highlight {
+  background-color: #008000;
+  font-size: 2em;
+}
 @-moz-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
