@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import { ROOT_URL, API_KEY, addStreamer, sortStreamersStatus} from '../actions/index.js';
+import { ROOT_URL, API_KEY, addStreamer,
+  updateInput, sortStreamersStatus} from '../actions/index.js';
 
 class Input extends Component {
   constructor(props) {
@@ -9,23 +10,18 @@ class Input extends Component {
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.sortOnline = this.sortOnline.bind(this);
-    this.state = { input: '' };
   }
 
   handleInputChange(e) {
-    this.setState({
-      input: e.target.value
-    });
+    this.props.updateInput(e.target.value)
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.addStreamer(this.state.input)
+    this.props.addStreamer(this.props.input)
     .then(() => {
       console.log(this.props.streamers);
-      this.setState({
-        input: ''
-      });
+      this.props.updateInput('');
       this.sortOnline();
     })
   }
@@ -73,7 +69,7 @@ class Input extends Component {
           <div className="input-container">
             <div id="addSearchIcon"><p><i className="fa fa-search" aria-hidden="true"></i></p></div>
             <input id="searchInput" type="text" placeholder="Search your streamers"
-              value={this.state.input}
+              value={this.props.input}
               onChange={this.handleInputChange}
               onSubmit={() => console.log('test')}/>
           </div>
@@ -84,7 +80,11 @@ class Input extends Component {
 }
 
 function mapStateToProps(state) {
-  return { streamers: state.streamers };
+  return {
+    streamers: state.streamers,
+    input: state.input
+   };
 }
 
-export default connect(mapStateToProps, { addStreamer, sortStreamersStatus })(Input);
+export default connect(mapStateToProps,
+  { addStreamer, sortStreamersStatus, updateInput })(Input);
