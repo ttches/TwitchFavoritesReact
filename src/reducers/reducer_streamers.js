@@ -1,4 +1,4 @@
-import { ADD_STREAMER } from '../actions/index';
+import { ADD_STREAMER, DELETE_STREAMER } from '../actions/index';
 
 const INITIAL_STATE = {
   chu8: {
@@ -108,8 +108,14 @@ const INITIAL_STATE = {
 export default function(state = INITIAL_STATE, action) {
   switch(action.type) {
     case ADD_STREAMER:
-    let { data } = action.payload;
+      let { data } = action.payload;
       return {...state, [data.name]: data };
+    case DELETE_STREAMER:
+      let streamer = action.payload;
+      let updatedState = {...state};
+      delete updatedState[streamer];
+      console.log(updatedState);
+      return updatedState;
     default:
       return state;
   }

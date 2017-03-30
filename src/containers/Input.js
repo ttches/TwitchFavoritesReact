@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import { ROOT_URL, API_KEY, addStreamer,
-  updateInput, sortStreamersStatus} from '../actions/index.js';
+  updateInput, sortStreamersStatus,
+  deleteStreamer} from '../actions/index.js';
 
 class Input extends Component {
   constructor(props) {
     super(props);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.inputMatchesStreamer = this.inputMatchesStreamer.bind(this);
     this.sortOnline = this.sortOnline.bind(this);
   }
 
@@ -17,14 +19,28 @@ class Input extends Component {
   }
 
   handleSubmit(e) {
+    const input = this.props.input.toLowerCase();
     e.preventDefault();
-    
-    this.props.addStreamer(this.props.input)
+    if (this.inputMatchesStreamer(input)) {
+      console.log('matched');
+      this.props.deleteStreamer(input);
+      return;
+    }
+    this.props.addStreamer(input)
     .then(() => {
       console.log(this.props.streamers);
       this.props.updateInput('');
       this.sortOnline();
     })
+  }
+
+  inputMatchesStreamer(input) {
+    for (let streamer of Object.keys(this.props.streamers)) {
+      if (streamer === input) {
+        return true;
+      }
+    }
+    return false;
   }
 
   sortOnline() {
@@ -88,4 +104,4 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps,
-  { addStreamer, sortStreamersStatus, updateInput })(Input);
+  { addStreamer, sortStreamersStatus, updateInput, deleteStreamer })(Input);
