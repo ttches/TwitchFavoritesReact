@@ -11,7 +11,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Nav />
         <main>
           <Tabs />
           <Input />

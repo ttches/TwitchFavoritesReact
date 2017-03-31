@@ -36,7 +36,7 @@ class Streams extends Component {
     const hasStreamers = Object.keys(this.props.streamers).length > 0
 
     return (
-      <div>
+      <div className={(this.props.inputMatches) ? 'streams-input-matches' : ''}>
         <div id="loading-div">
           <div className="loader"></div>
         </div>
@@ -61,7 +61,7 @@ class Streams extends Component {
             offline
             .filter(this.displayFilter)
             .map((streamer, index) =>
-              <StreamsConstructor    
+              <StreamsConstructor
                 input={this.props.input}
                 streamers={this.props.streamers}
                 isOnline={false}
@@ -80,7 +80,12 @@ class Streams extends Component {
 }
 
 function mapStateToProps(state) {
-  return { streamers: state.streamers, status: state.status, input: state.input };
+  return {
+    streamers: state.streamers,
+    status: state.status,
+    input: state.input,
+    inputMatches: state.inputMatches
+  };
 }
 
 export default connect(mapStateToProps)(Streams);

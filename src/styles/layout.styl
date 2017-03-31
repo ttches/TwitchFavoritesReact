@@ -27,13 +27,14 @@ time, mark, audio, video {
   font-family fontFamily
 
 body
-  position absolute
   margin 0px
   width 100%
   height 100%
-  background backgroundColor
+  background linear-gradient(259deg, rgba(146,24,186,1) 0%, rgba(99,15,117,1) 100%)
   color black
   font mainFont
+  @media screen and (min-width 521px)
+    margin-top 80px
 
 main
   margin 0 auto
@@ -43,6 +44,7 @@ main
   @media screen and (min-width 521px)
     border black
     border-top none
+    box-shadow: 11px 11px 25px -8px rgba(0,0,0,0.45);
 
 strong {
   font-weight: bold;

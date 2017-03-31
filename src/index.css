@@ -120,13 +120,21 @@ video {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 body {
-  position: absolute;
   margin: 0px;
   width: 100%;
   height: 100%;
-  background: #fff;
+  background: -webkit-linear-gradient(191deg, #9218ba 0%, #630f75 100%);
+  background: -moz-linear-gradient(191deg, #9218ba 0%, #630f75 100%);
+  background: -o-linear-gradient(191deg, #9218ba 0%, #630f75 100%);
+  background: -ms-linear-gradient(191deg, #9218ba 0%, #630f75 100%);
+  background: linear-gradient(259deg, #9218ba 0%, #630f75 100%);
   color: #000;
   font: 400, 0.666666666666667em 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+@media screen and (min-width: 521px) {
+  body {
+    margin-top: 80px;
+  }
 }
 main {
   margin: 0 auto;
@@ -144,6 +152,8 @@ main #tab-container {
   main {
     border: 1px solid #000;
     border-top: none;
+    -webkit-box-shadow: 11px 11px 25px -8px rgba(0,0,0,0.45);
+    box-shadow: 11px 11px 25px -8px rgba(0,0,0,0.45);
   }
 }
 strong {
@@ -159,6 +169,7 @@ u {
   color: #000;
 }
 .search-div {
+  background-color: #fff;
   width: 100%;
   padding: 12px 0;
   text-align: center;
@@ -175,9 +186,6 @@ u {
   -webkit-justify-content: center;
   justify-content: center;
 }
-.search-div form {
-  width: 80%;
-}
 .input-container {
   display: -webkit-inline-box;
   display: -moz-inline-box;
@@ -185,7 +193,7 @@ u {
   display: -ms-inline-flexbox;
   display: inline-box;
   display: inline-flex;
-  width: 100%;
+  width: 80%;
 }
 #searchInput {
   width: 90%;
@@ -417,6 +425,11 @@ nav .nav-container p {
   background-color: #008000;
   font-size: 2em;
 }
+.streams-input-matches .offline-streams,
+.streams-input-matches .online-streams {
+  -webkit-box-shadow: inset 0px 0px 30px 0px #c00;
+  box-shadow: inset 0px 0px 30px 0px #c00;
+}
 @-moz-keyframes spin {
   0% {
     -webkit-transform: rotate(0deg);
@@ -528,6 +541,9 @@ nav .nav-container p {
     -ms-filter: none;
     filter: none;
   }
+}
+#tab-container {
+  border-top: solid #000 1px;
 }
 #tab-container > div {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;

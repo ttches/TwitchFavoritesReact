@@ -9,7 +9,7 @@ class Input extends Component {
   constructor(props) {
     super(props);
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
     this.doesInputMatchesStreamer = this.doesInputMatchesStreamer.bind(this);
     this.sortOnline = this.sortOnline.bind(this);
   }
@@ -19,13 +19,15 @@ class Input extends Component {
     this.doesInputMatchesStreamer(e.target.value);
   }
 
-  handleSubmit(e) {
+  handleKeyDown(e) {
+    if (e.keyCode !== 13) return;
     const input = this.props.input.toLowerCase();
     e.preventDefault();
     if (this.props.inputMatches) {
       console.log('matched');
       this.props.deleteStreamer(input);
       this.props.updateInput('');
+      this.props.inputMatchesStreamer(false)
     } else {
       this.props.addStreamer(input)
       .then(() => {
@@ -86,16 +88,15 @@ class Input extends Component {
     return (
       <div className="search-div">
         <div id="refreshButton"><i className="fa fa-refresh" aria-hidden="true"></i></div>
-        <form onSubmit={this.handleSubmit} autoComplete="new-password">
           <div className="input-container">
             <div id="addSearchIcon"><p><i className="fa fa-search" aria-hidden="true"></i></p></div>
             <input id="searchInput" type="text" placeholder="Add, filter, or delete a streamer"
+              onKeyDown={this.handleKeyDown}
               autoComplete="new-password"
               value={this.props.input}
               onChange={this.handleInputChange}
               onSubmit={() => console.log('test')}/>
           </div>
-        </form>
       </div>
     );
   }
