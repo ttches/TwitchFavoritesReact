@@ -13,8 +13,8 @@ export default class StreamsConstructor extends Component {
       return value;
     }
     const regex = new RegExp(input, 'gi');
-    return value.replace(regex, `<span class='highlight'>
-    $&</span>`);
+    return value.replace(regex,
+      `<span class='highlight'>$&</span>`);
   }
 
   render() {

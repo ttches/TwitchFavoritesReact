@@ -134,6 +134,7 @@ body {
 @media screen and (min-width: 521px) {
   body {
     margin-top: 80px;
+    margin-bottom: 50px;
   }
 }
 main {
@@ -185,6 +186,7 @@ u {
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
+  border-bottom: #000 solid 1;
 }
 .input-container {
   display: -webkit-inline-box;
@@ -312,7 +314,7 @@ nav .nav-container p {
   animation: spin 1s linear infinite;
 }
 .online-streams {
-  background-color: #c5b6e2;
+  background-color: rgba(255,255,255,0.25);
   border-top: #000;
 }
 .online-stream,
@@ -374,6 +376,11 @@ nav .nav-container p {
 .offline-streams a {
   color: #807b8b;
 }
+.offline-streams img {
+  opacity: 0.4;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
+  filter: alpha(opacity=40);
+}
 .offline-streams .streams-placeholder {
   display: -webkit-box;
   display: -moz-box;
@@ -413,17 +420,17 @@ nav .nav-container p {
   border-radius: 50%;
   -webkit-box-shadow: 0 0 3px #00fa4f, 0 0 10px #00fa4f;
   box-shadow: 0 0 3px #00fa4f, 0 0 10px #00fa4f;
-  -webkit-animation: inex 1.5s infinite linear;
-  -moz-animation: inex 1.5s infinite linear;
-  -o-animation: inex 1.5s infinite linear;
-  -ms-animation: inex 1.5s infinite linear;
-  animation: inex 1.5s infinite linear;
+  -webkit-animation: inex 4s infinite linear;
+  -moz-animation: inex 4s infinite linear;
+  -o-animation: inex 4s infinite linear;
+  -ms-animation: inex 4s infinite linear;
+  animation: inex 4s infinite linear;
   margin-right: 5px;
   margin-top: 5px;
 }
 .highlight {
-  background-color: #008000;
-  font-size: 2em;
+  color: #52bdff;
+  font-size: 1.2em;
 }
 .streams-input-matches .offline-streams,
 .streams-input-matches .online-streams {

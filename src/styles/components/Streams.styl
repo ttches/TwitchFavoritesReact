@@ -21,7 +21,7 @@
   100% { transform: rotate(360deg); }
 
 .online-streams
-  background-color onlineColor
+  background-color hsla(0, 0%, 100%, 0.25)
   border-top black
 
 .online-stream, .offline-stream
@@ -58,6 +58,8 @@
   border-top 1px solid black
   a
     color typeOffline
+  img
+    opacity: .4
   .streams-placeholder
     display flex
     align-items center
@@ -80,13 +82,13 @@
   background-color hsla(139, 100%, 49%, 1)
   border-radius 50%
   box-shadow 0 0 3px hsla(139, 100%, 49%, 1),0 0 10px hsla(139, 100%, 49%, 1)
-  animation inex 1.5s infinite linear
+  animation inex 4s infinite linear
   margin-right 5px
   margin-top 5px
 
 .highlight
-  background-color: green;
-  font-size: 2em;
+  color: hsla(203, 100%, 66%, 1)
+  font-size: 1.2em
 
 @keyframes inex
   50%
