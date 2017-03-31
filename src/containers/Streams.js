@@ -17,8 +17,11 @@ class Streams extends Component {
 
 //Only streamers matching input will be displayed
   displayFilter(streamer) {
-    const regex = new RegExp(this.props.input, 'gi');
-    const { streamers } = this.props;
+    const { streamers, input } = this.props;
+    const regex = new RegExp(input, 'gi');
+    //If the streamer has been deleted and reducer_status has not been run again,
+    //ignore the streamer
+    if (!streamers[streamer]) return;
     if (streamers[streamer].game) {
       return streamers[streamer].name.match(regex) ||
       streamers[streamer].game.match(regex);
@@ -58,7 +61,7 @@ class Streams extends Component {
             offline
             .filter(this.displayFilter)
             .map((streamer, index) =>
-              <StreamsConstructor
+              <StreamsConstructor    
                 input={this.props.input}
                 streamers={this.props.streamers}
                 isOnline={false}

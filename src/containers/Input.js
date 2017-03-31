@@ -3,44 +3,48 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { ROOT_URL, API_KEY, addStreamer,
   updateInput, sortStreamersStatus,
-  deleteStreamer} from '../actions/index.js';
+  deleteStreamer, inputMatchesStreamer} from '../actions/index.js';
 
 class Input extends Component {
   constructor(props) {
     super(props);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.inputMatchesStreamer = this.inputMatchesStreamer.bind(this);
+    this.doesInputMatchesStreamer = this.doesInputMatchesStreamer.bind(this);
     this.sortOnline = this.sortOnline.bind(this);
   }
 
   handleInputChange(e) {
     this.props.updateInput(e.target.value)
+    this.doesInputMatchesStreamer(e.target.value);
   }
 
   handleSubmit(e) {
     const input = this.props.input.toLowerCase();
     e.preventDefault();
-    if (this.inputMatchesStreamer(input)) {
+    if (this.props.inputMatches) {
       console.log('matched');
       this.props.deleteStreamer(input);
-      return;
-    }
-    this.props.addStreamer(input)
-    .then(() => {
-      console.log(this.props.streamers);
       this.props.updateInput('');
-      this.sortOnline();
-    })
+    } else {
+      this.props.addStreamer(input)
+      .then(() => {
+        console.log(this.props.streamers);
+        this.props.updateInput('');
+        this.sortOnline();
+      });
+    }
   }
 
-  inputMatchesStreamer(input) {
+  doesInputMatchesStreamer(input) {
     for (let streamer of Object.keys(this.props.streamers)) {
       if (streamer === input) {
-        return true;
+        console.log('matched');
+        this.props.inputMatchesStreamer(true);
+        return;
       }
     }
-    return false;
+    this.props.inputMatchesStreamer(false);
   }
 
   sortOnline() {
@@ -82,10 +86,11 @@ class Input extends Component {
     return (
       <div className="search-div">
         <div id="refreshButton"><i className="fa fa-refresh" aria-hidden="true"></i></div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} autoComplete="new-password">
           <div className="input-container">
             <div id="addSearchIcon"><p><i className="fa fa-search" aria-hidden="true"></i></p></div>
-            <input id="searchInput" type="text" placeholder="Search your streamers"
+            <input id="searchInput" type="text" placeholder="Add, filter, or delete a streamer"
+              autoComplete="new-password"
               value={this.props.input}
               onChange={this.handleInputChange}
               onSubmit={() => console.log('test')}/>
@@ -99,9 +104,11 @@ class Input extends Component {
 function mapStateToProps(state) {
   return {
     streamers: state.streamers,
-    input: state.input
+    input: state.input,
+    inputMatches: state.inputMatches
    };
 }
 
 export default connect(mapStateToProps,
-  { addStreamer, sortStreamersStatus, updateInput, deleteStreamer })(Input);
+  { addStreamer, sortStreamersStatus, updateInput, deleteStreamer,
+    inputMatchesStreamer })(Input);

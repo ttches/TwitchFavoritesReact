@@ -323,6 +323,7 @@ nav .nav-container p {
   flex-wrap: nowrap;
   width: 100%;
   overflow: hidden;
+  min-height: 84px;
 }
 .stream-logo {
   display: -webkit-box;

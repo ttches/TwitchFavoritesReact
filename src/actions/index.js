@@ -7,6 +7,7 @@ export const ADD_STREAMER = 'ADD_STREAMER';
 export const DELETE_STREAMER = 'DELETE_STREAMER';
 export const SORT_STREAMERS_STATUS = 'SORT_STREAMERS_STATUS';
 export const UPDATE_INPUT = 'UPDATE_INPUT';
+export const INPUT_MATCHES_STREAMER = 'INPUT_MATCHES_STREAMER';
 
 export function addStreamer(streamer) {
   const request = axios.get(`${ROOT_URL}channels/${streamer}${API_KEY}`);
@@ -36,4 +37,12 @@ export function updateInput(input) {
     type: UPDATE_INPUT,
     payload: input
   };
+}
+
+export function inputMatchesStreamer(bool) {
+  console.log(bool);
+  return {
+    type: INPUT_MATCHES_STREAMER,
+    payload: bool
+  }
 }
