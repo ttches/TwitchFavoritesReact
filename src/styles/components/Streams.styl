@@ -31,10 +31,14 @@
   width 100%
   overflow hidden
   min-height 84px
+  transition all .2s
+  .streamer-status
+    font-size .8em
+    @media screen and (max-width 520px)
+      display none
 
 .stream-logo
   display flex
-  width 30%
   max-width 100px
   img
     width 80px
@@ -48,6 +52,20 @@
   padding-bottom 0
   p
     padding 0
+  @media screen and (min-width 1199px)
+    width 50%
+
+.stream-banner
+  border-radius 0px 0px 0px 100px
+  display flex
+  width 40%
+  background-position center
+  background-size: 130%
+  opacity .5
+  //transform: rotate(30deg)
+  @media screen and (max-width 1200px)
+    display none
+
 
 .status
   padding 0
@@ -73,7 +91,6 @@
     i
       margin-right 30px
       font-size 2em
-  .streams-placeholder
     &:hover
       cursor pointer
 

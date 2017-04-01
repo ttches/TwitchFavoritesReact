@@ -48,7 +48,12 @@ export default class StreamsConstructor extends Component {
                 {
                   __html: ''
                 }} />
+            <p className='streamer-status'>{streamer.status}</p>
           </a>
+        </div>
+        <div className="stream-banner"
+          style={{backgroundImage: `url(${streamer.profile_banner ||
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Twitch_BlackLogo.svg/800px-Twitch_BlackLogo.svg.png'})`}}>
         </div>
       </div>
     )

@@ -123,18 +123,28 @@ body {
   margin: 0px;
   width: 100%;
   height: 100%;
-  background: -webkit-linear-gradient(178deg, #6c17ad 0%, #4f0e73 100%);
-  background: -moz-linear-gradient(178deg, #6c17ad 0%, #4f0e73 100%);
-  background: -o-linear-gradient(178deg, #6c17ad 0%, #4f0e73 100%);
-  background: -ms-linear-gradient(178deg, #6c17ad 0%, #4f0e73 100%);
-  background: linear-gradient(272deg, #6c17ad 0%, #4f0e73 100%);
+  background: -webkit-linear-gradient(178deg, #62159e 0%, #400b5c 100%);
+  background: -moz-linear-gradient(178deg, #62159e 0%, #400b5c 100%);
+  background: -o-linear-gradient(178deg, #62159e 0%, #400b5c 100%);
+  background: -ms-linear-gradient(178deg, #62159e 0%, #400b5c 100%);
+  background: linear-gradient(272deg, #62159e 0%, #400b5c 100%);
   color: #000;
   font: 400, 0.666666666666667em 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 @media screen and (min-width: 521px) {
   body {
-    margin-top: 80px;
+    margin-top: 40px;
     margin-bottom: 50px;
+  }
+}
+#twitch-logo {
+  display: block;
+  margin: 0 auto;
+  width: 280px;
+}
+@media screen and (max-width: 520px) {
+  #twitch-logo {
+    display: none;
   }
 }
 main {
@@ -155,6 +165,12 @@ main #tab-container {
     border-top: none;
     -webkit-box-shadow: 11px 11px 25px -8px rgba(0,0,0,0.45);
     box-shadow: 11px 11px 25px -8px rgba(0,0,0,0.45);
+    margin-top: 30px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  main {
+    max-width: 800px;
   }
 }
 strong {
@@ -339,6 +355,21 @@ nav .nav-container p {
   width: 100%;
   overflow: hidden;
   min-height: 84px;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -ms-transition: all 0.2s;
+  transition: all 0.2s;
+}
+.online-stream .streamer-status,
+.offline-stream .streamer-status {
+  font-size: 0.8em;
+}
+@media screen and (max-width: 520px) {
+  .online-stream .streamer-status,
+  .offline-stream .streamer-status {
+    display: none;
+  }
 }
 .stream-logo {
   display: -webkit-box;
@@ -347,7 +378,6 @@ nav .nav-container p {
   display: -ms-flexbox;
   display: box;
   display: flex;
-  width: 30%;
   max-width: 100px;
 }
 .stream-logo img {
@@ -368,6 +398,33 @@ nav .nav-container p {
 }
 .stream-basic-info p {
   padding: 0;
+}
+@media screen and (min-width: 1199px) {
+  .stream-basic-info {
+    width: 50%;
+  }
+}
+.stream-banner {
+  border-radius: 0px 0px 0px 100px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  width: 40%;
+  background-position: center;
+  -webkit-background-size: 130%;
+  -moz-background-size: 130%;
+  background-size: 130%;
+  opacity: 0.5;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  filter: alpha(opacity=50);
+}
+@media screen and (max-width: 1200px) {
+  .stream-banner {
+    display: none;
+  }
 }
 .status {
   padding: 0;

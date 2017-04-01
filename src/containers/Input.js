@@ -75,13 +75,13 @@ class Input extends Component {
         }
       });
       console.log(onlineStreamers, offlineStreamers);
-      console.log(this);
       this.props.sortStreamersStatus([onlineStreamers, offlineStreamers]);
     });
   }
 
   componentWillMount(){
-    this.sortOnline();  //eventually make this a refresh
+    this.sortOnline();
+    console.log(this.props.streamers);
   }
 
 
