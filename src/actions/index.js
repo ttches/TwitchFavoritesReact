@@ -10,7 +10,10 @@ export const UPDATE_INPUT = 'UPDATE_INPUT';
 export const INPUT_MATCHES_STREAMER = 'INPUT_MATCHES_STREAMER';
 
 export function addStreamer(streamer) {
-  const request = axios.get(`${ROOT_URL}channels/${streamer}${API_KEY}`);
+  const request = axios.get(`${ROOT_URL}channels/${streamer}${API_KEY}`)
+    .catch((error) => {
+      alert('Streamer name not found. Please enter a streamer\'s username from Twitch.tv' );
+    });
   return {
     type: ADD_STREAMER,
     payload: request
