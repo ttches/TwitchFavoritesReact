@@ -39,6 +39,7 @@ class Input extends Component {
   }
 
   doesInputMatchesStreamer(input) {
+    input = input.toLowerCase();
     for (let streamer of Object.keys(this.props.streamers)) {
       if (streamer === input) {
         console.log('matched');
@@ -87,7 +88,9 @@ class Input extends Component {
   render() {
     return (
       <div className="search-div">
-        <div id="refreshButton"><i className="fa fa-refresh" aria-hidden="true"></i></div>
+        <div id="refreshButton" onClick={this.sortOnline}>
+          <i className="fa fa-refresh" aria-hidden="true"></i>
+        </div>
           <div className="input-container">
             <div id="addSearchIcon"><p><i className="fa fa-search" aria-hidden="true"></i></p></div>
             <input id="searchInput" type="text" placeholder="Add, filter, or delete a streamer"

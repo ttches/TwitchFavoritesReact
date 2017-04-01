@@ -22,7 +22,8 @@
 
 .online-streams
   background-color hsla(0, 0%, 100%, 0.25)
-  border-top black
+  > div:first-child
+    border-top black solid 1px
 
 .online-stream, .offline-stream
   display flex
@@ -55,7 +56,8 @@
 
 .offline-streams
   background-color offlineColor
-  border-top 1px solid black
+  > div:first-child
+    border-top black solid 1px
   a
     color typeOffline
   img
@@ -86,9 +88,6 @@
   margin-right 5px
   margin-top 5px
 
-.highlight
-  color: hsla(203, 100%, 66%, 1)
-  font-size: 1.2em
 
 @keyframes inex
   50%
@@ -96,6 +95,16 @@
   60%
     opacity 1
 
+.highlight
+  color: hsla(203, 100%, 66%, 1)
+  font-size: 1.2em
+
 .streams-input-matches
   .offline-streams, .online-streams
-    box-shadow inset 0px 0px 30px 0px #cc0000;
+    > div:first-child
+      box-shadow inset 0px 0px 30px 0px #cc0000;
+
+.hidden
+  display none
+  > div
+    display none
