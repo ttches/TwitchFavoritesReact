@@ -113,6 +113,17 @@ function mapStateToProps(state) {
    };
 }
 
+Input.propTypes = {
+  addStreamer: React.PropTypes.func,
+  deleteStreamer: React.PropTypes.func,
+  input: React.PropTypes.string,
+  inputMatches: React.PropTypes.bool,
+  inputMatchesStreamer: React.PropTypes.func,
+  sortStreamersStatus: React.PropTypes.func,
+  streamers: React.PropTypes.object,
+  updateInput: React.PropTypes.func,
+}
+
 export default connect(mapStateToProps,
   { addStreamer, sortStreamersStatus, updateInput, deleteStreamer,
     inputMatchesStreamer })(Input);

@@ -59,3 +59,10 @@ export default class StreamsConstructor extends Component {
     )
   }
 }
+
+StreamsConstructor.propTypes = {
+  input: React.PropTypes.string,
+  isOnline: React.PropTypes.bool,
+  name: React.PropTypes.string,
+  streamers: React.PropTypes.object
+};

@@ -79,6 +79,14 @@ class Streams extends Component {
   }
 }
 
+Streams.propTypes = {
+  dispatch: React.PropTypes.func,
+  streamers: React.PropTypes.object,
+  status: React.PropTypes.object,
+  input: React.PropTypes.string,
+  inputMatches: React.PropTypes.bool,
+}
+
 function mapStateToProps(state) {
   return {
     streamers: state.streamers,
