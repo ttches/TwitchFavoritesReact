@@ -10,6 +10,8 @@ class Input extends Component {
     super(props);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleDeleteStreamer = this.handleDeleteStreamer.bind(this);
+    this.handleAddStreamer = this.handleAddStreamer.bind(this);
     this.doesInputMatchesStreamer = this.doesInputMatchesStreamer.bind(this);
     this.sortOnline = this.sortOnline.bind(this);
   }
@@ -21,21 +23,30 @@ class Input extends Component {
 
   handleKeyDown(e) {
     if (e.keyCode !== 13) return;
-    const input = this.props.input.toLowerCase();
     e.preventDefault();
     if (this.props.inputMatches) {
       console.log('matched');
-      this.props.deleteStreamer(input);
-      this.props.updateInput('');
-      this.props.inputMatchesStreamer(false)
+      this.handleDeleteStreamer();
     } else {
-      this.props.addStreamer(input)
-      .then(() => {
-        console.log(this.props.streamers);
-        this.props.updateInput('');
-        this.sortOnline();
-      });
+      this.handleAddStreamer();
     }
+  }
+
+  handleDeleteStreamer() {
+    const input = this.props.input.toLowerCase();
+    this.props.deleteStreamer(input);
+    this.props.updateInput('');
+    this.props.inputMatchesStreamer(false);
+  }
+
+  handleAddStreamer() {
+    const input = this.props.input.toLowerCase();
+    this.props.addStreamer(input)
+    .then(() => {
+      console.log(this.props.streamers);
+      this.props.updateInput('');
+      this.sortOnline();
+    });
   }
 
   doesInputMatchesStreamer(input) {
@@ -99,6 +110,22 @@ class Input extends Component {
               value={this.props.input}
               onChange={this.handleInputChange}
               onSubmit={() => console.log('test')}/>
+
+            <button id="addStreamerIcon"
+              style={{display: `${((!this.props.inputMatches) && (this.props.input !== '')) ?
+                'block' : 'none'}`}}
+              onClick={this.handleAddStreamer}>
+
+              <p><i className="fa fa-plus-circle" aria-hidden="true"></i></p>
+            </button>
+
+            <button id="removeStreamerIcon"
+              style={{display: `${(this.props.inputMatches) ? 'block' : 'none' }`}}
+              onClick={this.handleDeleteStreamer}>
+
+              <p><i className="fa fa-minus-circle" aria-hidden="true"></i></p>
+            </button>
+
           </div>
       </div>
     );

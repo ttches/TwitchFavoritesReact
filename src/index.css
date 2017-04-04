@@ -229,6 +229,35 @@ u {
   top: 7px;
   left: 30px;
 }
+#addStreamerIcon,
+#removeStreamerIcon {
+  border: none;
+  color: #fff;
+  border-radius: 0px 3px 3px 0px;
+  top: 10px;
+  width: 23px;
+}
+#addStreamerIcon i,
+#removeStreamerIcon i {
+  position: relative;
+  top: 6px;
+}
+#addStreamerIcon:hover,
+#removeStreamerIcon:hover {
+  cursor: pointer;
+}
+#addStreamerIcon {
+  background-color: #8fcdff;
+  -webkit-box-shadow: 0 0 5px #8fcdff;
+  box-shadow: 0 0 5px #8fcdff;
+  box-shadow-left: none;
+}
+#removeStreamerIcon {
+  background-color: #ff8f8f;
+  -webkit-box-shadow: 0 0 5px #f00;
+  box-shadow: 0 0 5px #f00;
+  box-shadow-left: none;
+}
 #refreshButton {
   border-right: none;
 }
