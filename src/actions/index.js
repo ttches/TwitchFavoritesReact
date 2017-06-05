@@ -35,7 +35,7 @@ export function sortStreamersStatus(streamers) {
 }
 
 export function updateInput(input) {
-  console.log(input);
+  //console.log(input);
   return {
     type: UPDATE_INPUT,
     payload: input
@@ -43,7 +43,7 @@ export function updateInput(input) {
 }
 
 export function inputMatchesStreamer(bool) {
-  console.log(bool);
+  //console.log(bool);
   return {
     type: INPUT_MATCHES_STREAMER,
     payload: bool

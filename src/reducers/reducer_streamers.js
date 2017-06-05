@@ -216,7 +216,7 @@ export default function(state = INITIAL_STATE, action) {
       let streamer = action.payload;
       let updatedState = {...state};
       delete updatedState[streamer];
-      console.log(updatedState);
+      //console.log(updatedState);
       return updatedState;
     default:
       return state;
