@@ -118,6 +118,10 @@ video {
 }
 * {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 body {
   margin: 0px;
@@ -654,6 +658,10 @@ nav .nav-container p {
 #tab-container > div {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   border-right: #000 solid 1px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 #tab-container > div:last-child {
   border: none;
